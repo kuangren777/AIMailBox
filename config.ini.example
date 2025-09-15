@@ -1,0 +1,58 @@
+# 邮件服务器配置文件示例
+# 复制此文件为 config.ini 并修改相应的配置值
+
+[SMTP]
+# SMTP服务器配置
+server = x.x.x.x
+port = 587
+username = ai@kr777.top
+# SMTP密码，建议通过环境变量 SMTP_PASSWORD 设置
+password = your_password
+
+[SERVER]
+# 服务器配置
+port = xxxx
+host = 0.0.0.0
+log_level = info
+
+[SECURITY]
+# 安全配置
+# 入站验证密钥，建议通过环境变量 INBOUND_SECRET 设置
+inbound_secret = your_inbound_secret
+
+[AWS]
+# AWS SES配置
+region = ap-southeast-2
+# AWS访问密钥，建议通过环境变量设置
+access_key_id = your_access_key_id
+secret_access_key = your_aws_secret_key
+ses_from_email = ai@kr777.top
+trans_from_email = trans@kr777.top
+
+[FILES]
+# 文件存储配置
+emails_file = emails.json
+email_logs_file = email_logs.json
+
+[AI]
+# AI分析配置
+# API URL，建议通过环境变量 AI_API_URL 设置
+api_url = https://kr777.top/v1/chat/completions
+# API密钥，建议通过环境变量 AI_API_KEY 设置
+api_key = your_ai_api_key
+# AI模型，建议通过环境变量 AI_MODEL 设置
+model = grok-3
+# 最大令牌数，建议通过环境变量 AI_MAX_TOKENS 设置
+max_tokens = 100000
+# 温度参数，建议通过环境变量 AI_TEMPERATURE 设置
+temperature = 0.7
+
+[EMAIL_PROCESSING]
+# 邮件处理配置
+max_content_length = 100000
+default_reply_language = zh
+auto_reply_enabled = true
+
+[LOGGING]
+# 日志配置
+format = %%(asctime)s %%(levelname)s %%(message)s

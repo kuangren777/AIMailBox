@@ -1,0 +1,408 @@
+[
+  {
+    "timestamp": "2025-09-14T19:53:17.237263",
+    "data": {
+      "from": "",
+      "to": "",
+      "subject": "",
+      "date": "",
+      "message_id": "",
+      "text_content": "test\n",
+      "html_content": null,
+      "attachments": 0,
+      "timestamp": "2025-09-14T19:53:17.237254"
+    }
+  },
+  {
+    "timestamp": "2025-09-14T19:53:47.300185",
+    "data": {
+      "from": "",
+      "to": "",
+      "subject": "",
+      "date": "",
+      "message_id": "",
+      "text_content": "# Your system has configured 'manage_etc_hosts' as True.\n# As a result, if you wish for changes to this file to persist\n# then you will need to either\n# a.) make changes to the master file in /etc/cloud/templates/hosts.debian.tmpl\n# b.) change or remove the value of 'manage_etc_hosts' in\n#     /etc/cloud/cloud.cfg or cloud-config from user-data\n#\n127.0.1.1 rojp2txf3o.bytevirt.com rojp2txf3o.bytevirt.com\n127.0.0.1 localhost\n\n# The following lines are desirable for IPv6 capable hosts\n::1 localhost ip6-localhost ip6-loopback\nff02::1 ip6-allnodes\nff02::2 ip6-allrouters\n\n",
+      "html_content": null,
+      "attachments": 0,
+      "timestamp": "2025-09-14T19:53:47.300176"
+    }
+  },
+  {
+    "timestamp": "2025-09-14T23:01:41.541951",
+    "activity_type": "email_received",
+    "level": "info",
+    "details": {
+      "signature_present": true,
+      "payload_size": 19380
+    }
+  },
+  {
+    "timestamp": "2025-09-14T23:01:52.676800",
+    "activity_type": "email_analyzed",
+    "level": "info",
+    "details": {
+      "from": "luomingyu2002 <luomingyu2002@gmail.com>",
+      "intent": "support",
+      "can_auto_reply": true
+    }
+  },
+  {
+    "timestamp": "2025-09-14T23:01:52.677603",
+    "activity_type": "reply_failed",
+    "level": "error",
+    "details": {
+      "to": "luomingyu2002 <luomingyu2002@gmail.com>",
+      "method": null,
+      "message_id": null,
+      "error": "无效的邮箱地址"
+    }
+  },
+  {
+    "timestamp": "2025-09-14T23:03:30.332512",
+    "activity_type": "email_received",
+    "level": "info",
+    "details": {
+      "signature_present": true,
+      "payload_size": 27688
+    }
+  },
+  {
+    "timestamp": "2025-09-14T23:03:39.589005",
+    "activity_type": "email_analyzed",
+    "level": "info",
+    "details": {
+      "from": "kuangren <luomingyu2002@126.com>",
+      "intent": "other",
+      "can_auto_reply": true
+    }
+  },
+  {
+    "timestamp": "2025-09-14T23:03:39.589633",
+    "activity_type": "reply_failed",
+    "level": "error",
+    "details": {
+      "to": "kuangren <luomingyu2002@126.com>",
+      "method": null,
+      "message_id": null,
+      "error": "无效的邮箱地址"
+    }
+  },
+  {
+    "timestamp": "2025-09-14T23:06:48.441968",
+    "activity_type": "email_received",
+    "level": "info",
+    "details": {
+      "signature_present": true,
+      "payload_size": 14328
+    }
+  },
+  {
+    "timestamp": "2025-09-14T23:07:02.663801",
+    "activity_type": "email_analyzed",
+    "level": "info",
+    "details": {
+      "from": "kuangren <luomingyu2002@126.com>",
+      "intent": "other",
+      "can_auto_reply": true
+    }
+  },
+  {
+    "timestamp": "2025-09-14T23:07:03.846828",
+    "activity_type": "reply_sent",
+    "level": "info",
+    "details": {
+      "to": "kuangren <luomingyu2002@126.com>",
+      "method": "SES",
+      "message_id": "0108019948c3ec1e-1efb120b-6b02-4aa4-bb24-6ef8cd2ec137-000000",
+      "error": null
+    }
+  },
+  {
+    "timestamp": "2025-09-14T23:15:34.379971",
+    "activity_type": "email_received",
+    "level": "info",
+    "details": {
+      "signature_present": true,
+      "payload_size": 27624
+    }
+  },
+  {
+    "timestamp": "2025-09-14T23:15:44.502582",
+    "activity_type": "email_analyzed",
+    "level": "info",
+    "details": {
+      "from": "kuangren <luomingyu2002@126.com>",
+      "intent": "other",
+      "can_auto_reply": false
+    }
+  },
+  {
+    "timestamp": "2025-09-14T23:15:45.693798",
+    "activity_type": "reply_sent",
+    "level": "info",
+    "details": {
+      "to": "kuangren <luomingyu2002@126.com>",
+      "method": "SES",
+      "message_id": "0108019948cbe2a6-02418d9b-f379-4716-92ee-1588cdcb6949-000000",
+      "error": null
+    }
+  },
+  {
+    "timestamp": "2025-09-14T23:21:07.777405",
+    "activity_type": "email_received",
+    "level": "info",
+    "details": {
+      "signature_present": true,
+      "payload_size": 14264
+    }
+  },
+  {
+    "timestamp": "2025-09-14T23:21:19.480260",
+    "activity_type": "email_analyzed",
+    "level": "info",
+    "details": {
+      "from": "kuangren <luomingyu2002@126.com>",
+      "intent": "other",
+      "can_auto_reply": true
+    }
+  },
+  {
+    "timestamp": "2025-09-14T23:21:20.490804",
+    "activity_type": "reply_sent",
+    "level": "info",
+    "details": {
+      "to": "kuangren <luomingyu2002@126.com>",
+      "method": "SES",
+      "message_id": "0108019948d0fe6d-d703c853-0272-453c-a2ad-b89d65395a55-000000",
+      "error": null
+    }
+  },
+  {
+    "timestamp": "2025-09-15T09:27:02.341297",
+    "activity_type": "translation_request_received",
+    "level": "info",
+    "details": {
+      "target_language": "zh",
+      "signature_present": true,
+      "payload_size": 22368
+    }
+  },
+  {
+    "timestamp": "2025-09-15T09:27:23.313206",
+    "activity_type": "translation_completed",
+    "level": "info",
+    "details": {
+      "from": "luomingyu2002 <luomingyu2002@gmail.com>",
+      "target_language": "zh",
+      "original_language": "en",
+      "message_id": "<FA962539-D544-4E90-A160-D4CB1DB14CB7@gmail.com>"
+    }
+  },
+  {
+    "timestamp": "2025-09-15T09:33:23.852985",
+    "activity_type": "translation_request_received",
+    "level": "info",
+    "details": {
+      "target_language": "zh",
+      "signature_present": true,
+      "payload_size": 26364
+    }
+  },
+  {
+    "timestamp": "2025-09-15T09:33:44.310440",
+    "activity_type": "translation_completed",
+    "level": "info",
+    "details": {
+      "from": "luomingyu2002 <luomingyu2002@gmail.com>",
+      "target_language": "zh",
+      "original_language": "en",
+      "message_id": "<7B8114B1-617F-467B-9597-749DB0DEDEC2@gmail.com>"
+    }
+  },
+  {
+    "timestamp": "2025-09-15T09:36:32.715890",
+    "activity_type": "translation_request_received",
+    "level": "info",
+    "details": {
+      "target_language": "zh",
+      "signature_present": true,
+      "payload_size": 18436
+    }
+  },
+  {
+    "timestamp": "2025-09-15T09:36:49.174681",
+    "activity_type": "translation_completed",
+    "level": "info",
+    "details": {
+      "from": "kuangren <luomingyu2002@126.com>",
+      "target_language": "zh",
+      "original_language": "en",
+      "message_id": "<13512448.253f6.1994b042473.Coremail.luomingyu2002@126.com>"
+    }
+  },
+  {
+    "timestamp": "2025-09-15T09:37:47.832609",
+    "activity_type": "translation_request_received",
+    "level": "info",
+    "details": {
+      "target_language": "zh",
+      "signature_present": true,
+      "payload_size": 18372
+    }
+  },
+  {
+    "timestamp": "2025-09-15T09:38:05.146052",
+    "activity_type": "translation_completed",
+    "level": "info",
+    "details": {
+      "from": "luomingyu2002 <luomingyu2002@gmail.com>",
+      "target_language": "zh",
+      "original_language": "en",
+      "message_id": "<0B0FAD87-F68F-4069-A479-103777503772@gmail.com>"
+    }
+  },
+  {
+    "timestamp": "2025-09-15T09:39:05.504961",
+    "activity_type": "translation_request_received",
+    "level": "info",
+    "details": {
+      "target_language": "zh",
+      "signature_present": true,
+      "payload_size": 22516
+    }
+  },
+  {
+    "timestamp": "2025-09-15T09:39:22.931584",
+    "activity_type": "translation_completed",
+    "level": "info",
+    "details": {
+      "from": "kuangren <luomingyu2002@126.com>",
+      "target_language": "zh",
+      "original_language": "en",
+      "message_id": "<3d3712b9.2540f.1994b067e49.Coremail.luomingyu2002@126.com>"
+    }
+  },
+  {
+    "timestamp": "2025-09-15T09:39:35.599047",
+    "activity_type": "translation_request_received",
+    "level": "info",
+    "details": {
+      "target_language": "zh",
+      "signature_present": true,
+      "payload_size": 26580
+    }
+  },
+  {
+    "timestamp": "2025-09-15T09:39:55.230108",
+    "activity_type": "translation_send_exception",
+    "level": "error",
+    "details": {
+      "to": "kuangren <luomingyu2002@126.com>",
+      "error": "EmailSender.send_email() got an unexpected keyword argument 'content'",
+      "target_language": "zh"
+    }
+  },
+  {
+    "timestamp": "2025-09-15T09:39:55.230842",
+    "activity_type": "translation_completed",
+    "level": "info",
+    "details": {
+      "from": "kuangren <luomingyu2002@126.com>",
+      "target_language": "zh",
+      "original_language": "en",
+      "message_id": "<5d6e3a32.25416.1994b06f3a2.Coremail.luomingyu2002@126.com>"
+    }
+  },
+  {
+    "timestamp": "2025-09-15T09:53:10.121671",
+    "activity_type": "translation_request_received",
+    "level": "info",
+    "details": {
+      "target_language": "zh",
+      "signature_present": true,
+      "payload_size": 30640
+    }
+  },
+  {
+    "timestamp": "2025-09-15T09:53:30.969557",
+    "activity_type": "translation_sent",
+    "level": "info",
+    "details": {
+      "to": "kuangren <luomingyu2002@126.com>",
+      "target_language": "zh",
+      "original_language": "en",
+      "message_id": "<645c4b7a.25515.1994b135cbf.Coremail.luomingyu2002@126.com>"
+    }
+  },
+  {
+    "timestamp": "2025-09-15T09:53:30.970368",
+    "activity_type": "translation_completed",
+    "level": "info",
+    "details": {
+      "from": "kuangren <luomingyu2002@126.com>",
+      "target_language": "zh",
+      "original_language": "en",
+      "message_id": "<645c4b7a.25515.1994b135cbf.Coremail.luomingyu2002@126.com>"
+    }
+  },
+  {
+    "timestamp": "2025-09-15T10:57:02.017274",
+    "activity_type": "email_received",
+    "level": "info",
+    "details": {
+      "signature_present": true,
+      "payload_size": 12528
+    }
+  },
+  {
+    "timestamp": "2025-09-15T10:57:14.352329",
+    "activity_type": "email_analyzed",
+    "level": "info",
+    "details": {
+      "from": "kuangren <luomingyu2002@126.com>",
+      "intent": "request",
+      "can_auto_reply": false
+    }
+  },
+  {
+    "timestamp": "2025-09-15T10:57:15.411022",
+    "activity_type": "reply_sent",
+    "level": "info",
+    "details": {
+      "to": "kuangren <luomingyu2002@126.com>",
+      "method": "SES",
+      "message_id": "010801994b4e1f93-c8b52336-9361-4362-aedc-978f48da908d-000000",
+      "error": null
+    }
+  },
+  {
+    "timestamp": "2025-09-15T10:58:20.756539",
+    "activity_type": "email_received",
+    "level": "info",
+    "details": {
+      "signature_present": true,
+      "payload_size": 17848
+    }
+  },
+  {
+    "timestamp": "2025-09-15T10:58:37.948696",
+    "activity_type": "email_analyzed",
+    "level": "info",
+    "details": {
+      "from": "kuangren <luomingyu2002@126.com>",
+      "intent": "request",
+      "can_auto_reply": false
+    }
+  },
+  {
+    "timestamp": "2025-09-15T10:58:38.990388",
+    "activity_type": "reply_sent",
+    "level": "info",
+    "details": {
+      "to": "kuangren <luomingyu2002@126.com>",
+      "method": "SES",
+      "message_id": "010801994b4f6614-a968fd03-5d58-4c65-9fb7-f177c6cb84bd-000000",
+      "error": null
+    }
+  }
+]
