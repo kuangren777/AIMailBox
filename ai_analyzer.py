@@ -41,7 +41,7 @@ class EmailAnalyzer:
             else:
                 return 'en'  # 默认英语
     
-    def analyze_email_content(self, email_content: str, sender: str = "") -> Dict:
+    def analyze_email_content(self, email_content: str, sender: str = "", user_instruction: str = "") -> Dict:
         """分析邮件内容"""
         if not email_content:
             return self._get_default_analysis(email_content)
@@ -50,7 +50,7 @@ class EmailAnalyzer:
         detected_language = self.detect_language(email_content)
         
         # 构建分析提示
-        prompt = self._build_analysis_prompt(email_content, detected_language)
+        prompt = self._build_analysis_prompt(email_content, detected_language, user_instruction)
         
         # 调用AI API
         ai_response = self._call_ai_api(prompt)
@@ -60,6 +60,7 @@ class EmailAnalyzer:
                 analysis = self._parse_ai_response(ai_response)
                 analysis['detected_language'] = detected_language
                 analysis['sender'] = sender
+                analysis['user_instruction'] = user_instruction
                 return analysis
             except Exception as e:
                 logger.error(f"解析AI响应失败: {e}")
@@ -67,14 +68,30 @@ class EmailAnalyzer:
         # 返回默认分析
         return self._get_default_analysis(email_content, detected_language)
     
-    def _build_analysis_prompt(self, content: str, language: str) -> str:
+    def _build_analysis_prompt(self, content: str, language: str, user_instruction: str = "") -> str:
         """构建AI分析提示"""
+        
+        # 构建用户指令部分
+        instruction_part = ""
+        if user_instruction.strip():
+            instruction_part = f"""
+
+【重要】用户附加指令/要求：
+{user_instruction.strip()}
+
+请特别注意上述用户指令，在分析和回复时必须考虑这些指令。用户指令可能包含：
+- 特定的回复要求或格式
+- 需要重点关注的信息
+- 处理邮件的特殊方式
+- 额外的数据或背景信息
+请在分析结果中体现对用户指令的理解和执行。"""
+        
         return f"""你是一个邮件助手，当我给你邮件的时候，你需要根据我给你的指令（如有）：
 1. 提取出这个邮件是要干什么的，目前的进展有哪些（中文回答）
 2. 判断是否需要回信（中文回答）
 3. 如果需要我提供的信息，可以先问我，我会提供。当你拿到可以写回信的信息的时候，你可以开始写作。
 4. 如果需要回信，请给出回信的具体内容。（英文）
-我也会给你提要求，需要你帮我写邮件。
+我也会给你提要求，需要你帮我写邮件。{instruction_part}
 
 邮件内容：
 {content}
@@ -86,13 +103,15 @@ class EmailAnalyzer:
   "intent": "邮件意图（inquiry/request/complaint/meeting/order/support/other）",
   "urgency": "紧急程度（low/medium/high）",
   "can_auto_reply": "是否可以自动回复（true/false）",
-  "chinese_content": "邮件的中文摘要和目的分析",
-  "todo_items": ["需要完成的事项列表（需要尽可能详细）"],
+  "chinese_content": "邮件的中文摘要和目的分析{"，如有用户指令请说明如何执行" if user_instruction.strip() else ""}",
+  "todo_items": ["需要完成的事项列表（需要尽可能详细）{"，包含用户指令相关任务" if user_instruction.strip() else ""}"],
   "main_topic": "主要话题",
   "requires_info": "如果不能自动回复，需要什么额外信息，需要尽可能详细",
   "sentiment": "情感倾向（positive/neutral/negative）",
   "need_reply": "是否需要回信（true/false）",
-  "reply_content": "如果需要回信，提供英文回信内容，如果不需要则为空字符串"
+  "reply_content": "如果需要回信，提供英文回信内容{"，必须遵循用户指令要求" if user_instruction.strip() else ""}，如果不需要则为空字符串",
+  "user_instruction_understood": "{"true" if user_instruction.strip() else "false"}",
+  "instruction_execution_plan": "{"说明如何执行用户指令" if user_instruction.strip() else ""}"
 }}
 ```
 

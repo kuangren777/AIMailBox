@@ -10,6 +10,7 @@ from ai_analyzer import analyzer
 from email_sender import sender
 from data_storage import storage
 from trans import translator
+from utils import is_forwarded_email, extract_user_instruction
 
 # 初始化FastAPI应用
 app = FastAPI()
@@ -19,39 +20,7 @@ logging.basicConfig(
     format=config.LOG_FORMAT
 )
 
-def _is_forwarded_email(subject: str, content: str) -> bool:
-    """检测是否为转发邮件"""
-    if not subject and not content:
-        return False
-    
-    # 检查主题中的转发标识
-    subject_lower = subject.lower() if subject else ""
-    forwarded_indicators = ['fwd:', 'fw:', '转发:', '转：', 'forward:', 'forwarded:']
-    
-    for indicator in forwarded_indicators:
-        if indicator in subject_lower:
-            return True
-    
-    # 检查内容中的转发标识
-    if content:
-        content_lower = content.lower()
-        content_indicators = [
-            'forwarded message', '转发的邮件', '转发邮件', 
-            'original message', '原始邮件', '---------- forwarded message',
-            'from:', 'sent:', 'to:', 'subject:' # 常见的邮件头信息
-        ]
-        
-        # 如果内容中包含多个邮件头信息，很可能是转发邮件
-        header_count = sum(1 for indicator in content_indicators[-4:] if indicator in content_lower)
-        if header_count >= 2:
-            return True
-            
-        # 检查其他转发标识
-        for indicator in content_indicators[:-4]:
-            if indicator in content_lower:
-                return True
-    
-    return False
+
 
 @app.post("/inbound")
 async def inbound(request: Request):
@@ -87,9 +56,14 @@ async def inbound(request: Request):
         analysis_result = None
         if config.AUTO_REPLY_ENABLED and processed_email.text_content:
             try:
+                # 检测是否为转发邮件并提取用户指令
+                is_forwarded = is_forwarded_email(processed_email.subject, processed_email.text_content)
+                user_instruction = extract_user_instruction(processed_email.text_content, is_forwarded)
+                
                 analysis_result = analyzer.analyze_email_content(
                     processed_email.text_content,
-                    processed_email.from_email
+                    processed_email.from_email,
+                    user_instruction
                 )
                 
                 storage.log_activity(
@@ -118,15 +92,12 @@ async def inbound(request: Request):
         send_result = None
         if processed_email.from_email and analysis_result:
             try:
-                # 检测是否为转发邮件
-                is_forwarded_email = _is_forwarded_email(processed_email.subject, processed_email.text_content)
-                
                 # 生成回复内容
                 reply_subject, reply_body = analyzer.generate_reply(
                     analysis_result,
                     processed_email.subject,
                     processed_email.text_content,
-                    is_forwarded_email
+                    is_forwarded
                 )
                 
                 # 发送回复邮件
@@ -525,12 +496,13 @@ async def get_statistics():
         )
 
 @app.post("/analyze")
-async def analyze_text(text: str, sender: str = ""):
+async def analyze_text(text: str, sender: str = "", user_instruction: str = ""):
     """手动分析文本内容"""
     try:
-        analysis = analyzer.analyze_email_content(text, sender)
+        analysis = analyzer.analyze_email_content(text, sender, user_instruction)
         return {
             "text": text[:200] + "..." if len(text) > 200 else text,
+            "user_instruction": user_instruction if user_instruction else "无",
             "analysis": analysis
         }
     except Exception as e:
